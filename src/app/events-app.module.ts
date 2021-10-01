@@ -4,12 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { EventsAppComponent } from './events-app.component';
 
 @NgModule({
-  declarations: [
-    EventsAppComponent
-  ],
+  // Use for importing other modules
   imports: [
     BrowserModule
   ],
+
+  // To add a component, pipe or directive, it must be firstly declared:
+  declarations: [
+    EventsAppComponent
+  ],
+
+  // Services are added as providers
   providers: [],
   bootstrap: [EventsAppComponent]
 })

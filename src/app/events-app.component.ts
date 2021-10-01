@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
+
+  // HTML tag to use in order to display the component:
   selector: 'events-app',
-  template: '<h2> Holi, Mundo </h2>>',
+  templateUrl: './events-app.component.html',
   styleUrls: ['./events-app.component.scss']
 })
 export class EventsAppComponent {
