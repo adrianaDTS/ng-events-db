@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+  selector: 'events-app',
+  template: '<h2> Holi, Mundo </h2>>',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class EventsAppComponent {
   title = 'ng-events-db';
 }
