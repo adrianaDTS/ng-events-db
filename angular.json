@@ -28,10 +28,7 @@
               "node_modules/ngf-bootstrap/dist/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": [
-              // "node_modules/jquery/dist/jquey.mim.js",
-              // "node_modules/ngf-bootstrap/dist/js/bootstrap.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
