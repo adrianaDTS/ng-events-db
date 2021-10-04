@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { EventsAppComponent } from './events-app.component';
 import { EventsListComponent } from './events/events-list.component';
 import { EventsThumbnailComponent } from './events/events-thumbnail.component';
+import { NavBarComponent } from './nav/navbar-component';
 
 @NgModule({
   // Use for importing other modules
@@ -15,7 +16,8 @@ import { EventsThumbnailComponent } from './events/events-thumbnail.component';
   declarations: [
     EventsAppComponent,
     EventsListComponent,
-    EventsThumbnailComponent
+    EventsThumbnailComponent,
+    NavBarComponent
   ],
 
   // Services are added as providers
