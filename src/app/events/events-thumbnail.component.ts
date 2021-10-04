@@ -11,11 +11,15 @@ import { Component, Input } from '@angular/core';
     <p> Time: {{ event.time }}</p>
     <p> Price: {{ event.price }} €</p>
     <p>
-    <span>Location: {{ event.location.address }}, {{ event.location.city }},
-  {{ event.location.country }}</span>
-  </p>
-</article>
-`
+    <span>Location: {{ event.location.address }},</span>
+    <span class="pad-left">{{ event.location.city }}, {{ event.location.country }}</span>
+    </p>
+  </article>
+  `,
+  styles: [`
+    .pad-left { margin-left: 5px; }
+    .well p { color: #bbb; }
+  `]
 })
 
 export class EventsThumbnailComponent {
