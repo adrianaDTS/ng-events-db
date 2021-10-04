@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { EventsAppComponent } from './events-app.component';
-import { EventsListComponent } from './events/events-list.components';
+import { EventsListComponent } from './events/events-list.component';
+import { EventsThumbnailComponent } from './events/events-thumbnail.component';
 
 @NgModule({
   // Use for importing other modules
@@ -13,7 +14,8 @@ import { EventsListComponent } from './events/events-list.components';
   // To add a component, pipe or directive, it must be firstly declared:
   declarations: [
     EventsAppComponent,
-    EventsListComponent
+    EventsListComponent,
+    EventsThumbnailComponent
   ],
 
   // Services are added as providers
