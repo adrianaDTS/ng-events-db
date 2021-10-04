@@ -21,11 +21,4 @@ describe('EventsAppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('ng-events-db');
   });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(EventsAppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ng-events-db app is running!');
-  });
 });
