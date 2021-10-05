@@ -2,14 +2,14 @@ import { Component } from "@angular/core";
 import { EventService } from "../shared/event.service";
 
 @Component({
-  templateUrl: './event-detail.component.html',
+  templateUrl: './event-details.component.html',
   styles: [`
   .container { padding: 0 20px; }
   .event-image {height: 100px}`]
 
 })
 
-export class EventDetailsComponent {
+export class EventDetailComponent {
   event: any;
   constructor(private eventService: EventService) {
 
