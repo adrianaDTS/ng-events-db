@@ -9,7 +9,7 @@ import { EventService } from "../shared/event.service";
 
 })
 
-export class EventDetailComponent {
+export class EventDetailsComponent {
   event: any;
   constructor(private eventService: EventService) {
 
