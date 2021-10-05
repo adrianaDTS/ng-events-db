@@ -8,6 +8,7 @@ import { EventsListComponent } from './events/events-list.component';
 import { EventsThumbnailComponent } from './events/events-thumbnail.component';
 import { EventService } from './events/shared/event.service';
 import { NavBarComponent } from './nav/navbar-component';
+import { CreateEventComponent } from './events/create-event.component';
 
 import { ToastrService } from './commons/toastr.service';
 
@@ -26,7 +27,8 @@ import { appRoutes } from './routes';
     EventsListComponent,
     EventsThumbnailComponent,
     EventDetailsComponent,
-    NavBarComponent
+    NavBarComponent,
+    CreateEventComponent
   ],
 
   // Services are added as providers
