@@ -1,6 +1,8 @@
+import { toBase64String } from "@angular/compiler/src/output/source_map";
 import { Component } from "@angular/core";
 import { EventService } from "./shared/event.service";
 
+declare let toastr;
 @Component({
   selector: 'events-list',
   template: `
@@ -9,7 +11,7 @@ import { EventService } from "./shared/event.service";
     <hr />
     <div class="row">
       <div *ngFor="let event of events" class="col-md-6">
-        <event-thumbnail [event]='event'></event-thumbnail>
+        <event-thumbnail (click)="handleThumbnailClick(event.name)" [event]='event'></event-thumbnail>
       </div>
     </div>
   </article>
@@ -27,4 +29,8 @@ export class EventsListComponent {
 
   // Life cycle event that is called when the component is being loaded
   ngOnInit() { this.events = this.eventService.getEvents(); }
+
+  handleThumbnailClick(eventName) {
+    toastr.success(eventName);
+  }
 }
