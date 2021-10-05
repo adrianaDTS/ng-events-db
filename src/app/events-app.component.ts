@@ -4,7 +4,10 @@ import { Component } from '@angular/core';
 
   // HTML tag to use in order to display the component:
   selector: 'events-app',
-  templateUrl: './events-app.component.html',
+  template: `
+    <nav-bar></nav-bar>
+    <events-list></events-list>
+`,
   styleUrls: ['./events-app.component.scss']
 })
 export class EventsAppComponent {
