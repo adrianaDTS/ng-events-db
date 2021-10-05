@@ -6,7 +6,9 @@ import { ActivatedRoute } from "@angular/router";
   templateUrl: './event-details.component.html',
   styles: [`
   .container { padding: 0 20px; }
-  .event-image {height: 100px}`]
+  .event-image { height: 100px; }
+  .pad-left { margin-left: 5px; }
+  `]
 
 })
 

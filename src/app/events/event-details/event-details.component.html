@@ -1,5 +1,5 @@
 <div class="container">
-  <img [src]="event?.imageUrl" [alt]="event?.name" class="event-image"/>
+  <img [src]="event?.imageUrl" [alt]="event?.name" class="event-image" />
 
   <div class="row">
     <div class="col-md-11">
@@ -14,11 +14,16 @@
       <p><strong>Price:</strong> ${{ event?.price }}</p>
     </div>
     <div class="col-md-6">
-      <address>
+      <address *ngIf="event?.location">
         <strong>Address:</strong><br />
         {{ event?.location?.address }}<br />
         {{ event?.location?.city }}, {{ event?.location?.country }}
       </address>
+      <p [hidden]="!event?.onlineUrl">
+        Online URL:<a [href]="event?.onlineUrl" class="pad-left">{{
+          event?.onlineUrl
+        }}</a>
+      </p>
     </div>
   </div>
 </div>
