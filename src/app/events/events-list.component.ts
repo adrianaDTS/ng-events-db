@@ -1,5 +1,6 @@
 import { toBase64String } from "@angular/compiler/src/output/source_map";
 import { Component } from "@angular/core";
+import { ToastrService } from "../commons/toastr.service";
 import { EventService } from "./shared/event.service";
 
 declare let toastr;
@@ -23,7 +24,7 @@ export class EventsListComponent {
 
   /* It's not a good idea to put things that are going to be long running in
   the constructor, but eventually this part will be an AJAX request. */
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService, private toastr: ToastrService) {
 
   }
 
@@ -31,6 +32,6 @@ export class EventsListComponent {
   ngOnInit() { this.events = this.eventService.getEvents(); }
 
   handleThumbnailClick(eventName) {
-    toastr.success(eventName);
+    this.toastr.info(eventName);
   }
 }
