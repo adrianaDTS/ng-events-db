@@ -1,21 +1,24 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ActivatedRouteSnapshot } from '@angular/router';
+
+import {
+  EventDetailsComponent,
+  EventsListComponent,
+  EventsThumbnailComponent,
+  EventService,
+  CreateEventComponent,
+  EventRouteActivator,
+  EventListResolver
+} from './events/index';
 
 import { EventsAppComponent } from './app.component';
-import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { EventsListComponent } from './events/events-list.component';
-import { EventsThumbnailComponent } from './events/events-thumbnail.component';
 import { NavBarComponent } from './nav/navbar-component';
-import { CreateEventComponent } from './events/create-event.component';
 import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 
 // Services (providers)
-import { EventService } from './events/shared/event.service';
 import { ToastrService } from './commons/toastr.service';
-import { EventRouteActivator } from './events/event-details/event-route-activator.component';
-import { EventListResolver } from './events/shared/events-list-resolver.service';
 
 @NgModule({
   // Use for importing other modules
