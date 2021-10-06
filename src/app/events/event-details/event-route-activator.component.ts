@@ -6,6 +6,8 @@ import { EventService } from "../shared/event.service";
 export class EventRouteActivator implements CanActivate {
   constructor(private eventService: EventService, private router: Router) { }
 
+
+  // to prevent the user to navigate to unexisting pages
   canActivate(route: ActivatedRouteSnapshot) {
     const eventExist = !!this.eventService.getEvent(+route.params['id']);
 
