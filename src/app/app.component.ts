@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     <nav-bar></nav-bar>
     <router-outlet></router-outlet>
 `,
-  styleUrls: ['./events-app.component.scss']
+  styleUrls: ['./app.component.scss']
 })
 export class EventsAppComponent {
   title = 'ng-events-db';
