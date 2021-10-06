@@ -1,5 +1,6 @@
 import { toBase64String } from "@angular/compiler/src/output/source_map";
 import { Component } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 import { ToastrService } from "../commons/toastr.service";
 import { EventService } from "./shared/event.service";
 
@@ -23,12 +24,14 @@ export class EventsListComponent {
 
   /* It's not a good idea to put things that are going to be long running in
   the constructor, but eventually this part will be an AJAX request. */
-  constructor(private eventService: EventService, private toastr: ToastrService) {
+  constructor(private eventService: EventService, private toastr: ToastrService, private route: ActivatedRoute) {
 
   }
 
   // Life cycle event that is called when the component is being loaded
-  ngOnInit() { this.events = this.eventService.getEvents(); }
+  ngOnInit() {
+    this.events = this.route.snapshot.data['events'];
+  }
 
   handleThumbnailClick(eventName) {
     this.toastr.info(eventName);

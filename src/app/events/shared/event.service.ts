@@ -1,11 +1,20 @@
 import { Injectable } from "@angular/core";
 
+// subject observable. Observables are are like streams of data, kind of like arrays where the data arrives over time
+import { Subject } from "rxjs";
+
 // It's a good practice to mark services as injectable (adding the injectable decorator).
 // It's only required when you inject a service that also injects other services as dependencies of their own.
 @Injectable()
 export class EventService {
   getEvents() {
-    return EVENTS;
+
+    // subject is a type of observable
+    let subject = new Subject();
+
+    // we add data to this observable stream inside the setTimeout function to simulate asynchrony
+    setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 500);
+    return subject;
   }
 
   getEvent(id: number) {
