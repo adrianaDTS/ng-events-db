@@ -6,13 +6,15 @@ import { EventsAppComponent } from './events-app.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { EventsListComponent } from './events/events-list.component';
 import { EventsThumbnailComponent } from './events/events-thumbnail.component';
-import { EventService } from './events/shared/event.service';
 import { NavBarComponent } from './nav/navbar-component';
 import { CreateEventComponent } from './events/create-event.component';
-
-import { ToastrService } from './commons/toastr.service';
-
 import { appRoutes } from './routes';
+import { Error404Component } from './errors/404.component';
+
+// Services (providers)
+import { EventService } from './events/shared/event.service';
+import { ToastrService } from './commons/toastr.service';
+import { EventRouteActivator } from './events/event-details/event-route-activator.component';
 
 @NgModule({
   // Use for importing other modules
@@ -28,13 +30,15 @@ import { appRoutes } from './routes';
     EventsThumbnailComponent,
     EventDetailsComponent,
     NavBarComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    Error404Component
   ],
 
   // Services are added as providers
   providers: [
     EventService,
-    ToastrService
+    ToastrService,
+    EventRouteActivator
   ],
   bootstrap: [EventsAppComponent]
 })

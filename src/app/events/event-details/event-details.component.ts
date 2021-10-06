@@ -19,6 +19,7 @@ export class EventDetailsComponent {
   }
 
   ngOnInit() {
+    // '+' is used to cast a number
     this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
   }
 }
