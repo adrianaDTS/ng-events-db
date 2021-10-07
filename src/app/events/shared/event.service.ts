@@ -1,32 +1,35 @@
 import { Injectable } from "@angular/core";
 
 // subject observable. Observables are are like streams of data, kind of like arrays where the data arrives over time
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
+import { IEvent } from ".";
 
 // It's a good practice to mark services as injectable (adding the injectable decorator).
 // It's only required when you inject a service that also injects other services as dependencies of their own.
 @Injectable()
 export class EventService {
-  getEvents() {
+
+  // the return type here is subject, not IEvent, because we are using observables, but we can specify the data type of it (IEvent), , but subject it a little too specific, so better use the type Observable
+  getEvents():Observable<IEvent[]> {
 
     // subject is a type of observable
-    let subject = new Subject();
+    let subject = new Subject<IEvent[]>();
 
     // we add data to this observable stream inside the setTimeout function to simulate asynchrony
     setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 500);
     return subject;
   }
 
-  getEvent(id: number) {
+  getEvent(id: number):IEvent {
     return EVENTS.find(event => event.id === id);
   }
 }
 
-const EVENTS = [
+const EVENTS:IEvent[] = [
   {
     id: 1,
     name: 'Angular Connect',
-    date: '9/26/2036',
+    date: new Date ('9/26/2036'),
     time: '10:00 am',
     price: 599.99,
     imageUrl: '/assets/images/angularconnect-shield.png',
@@ -42,10 +45,8 @@ const EVENTS = [
         presenter: "Peter Bacon Darwin",
         duration: 1,
         level: "Intermediate",
-        abstract: `Learn all about the new pipes in Angular 4, both 
-          how to write them, and how to get the new AI CLI to write 
-          them for you. Given by the famous PBD, president of Angular 
-          University (formerly Oxford University)`,
+        abstract: `Learn all about the new pipes in Angular 4, both how to write them, and how to get the new AI CLI to write 
+          them for you. Given by the famous PBD, president of Angular University (formerly Oxford University)`,
         voters: ['bradgreen', 'igorminar', 'martinfowler']
       },
       {
@@ -54,10 +55,8 @@ const EVENTS = [
         presenter: "Jeff Cross",
         duration: 1,
         level: "Intermediate",
-        abstract: `We all know that our dev teams work hard, but with 
-          the right management they can be even more productive, without 
-          overworking them. In this session I'll show you how to get the 
-          best results from the talent you already have on staff.`,
+        abstract: `We all know that our dev teams work hard, but with the right management they can be even more productive, without 
+          overworking them. In this session I'll show you how to get the best results from the talent you already have on staff.`,
         voters: ['johnpapa', 'bradgreen', 'igorminar', 'martinfowler']
       },
       {
@@ -67,10 +66,8 @@ const EVENTS = [
         duration: 2,
         level: "Advanced",
         abstract: `Angular 4 Performance is hot. In this session, we'll see 
-          how Angular gets such great performance by preloading data on 
-          your users devices before they even hit your site using the 
-          new predictive algorithms and thought reading software 
-          built into Angular 4.`,
+          how Angular gets such great performance by preloading data on your users devices before they even hit your site using the 
+          new predictive algorithms and thought reading software built into Angular 4.`,
         voters: []
       },
       {
@@ -79,12 +76,10 @@ const EVENTS = [
         presenter: "Brad Green",
         duration: 2,
         level: "Advanced",
-        abstract: `Even though Angular 5 is still 6 years away, we all want 
-          to know all about it so that we can spend endless hours in meetings 
+        abstract: `Even though Angular 5 is still 6 years away, we all want to know all about it so that we can spend endless hours in meetings 
           debating if we should use Angular 4 or not. This talk will look at 
           Angular 6 even though no code has yet been written for it. We'll 
-          look at what it might do, and how to convince your manager to 
-          hold off on any new apps until it's released`,
+          look at what it might do, and how to convince your manager to hold off on any new apps until it's released`,
         voters: []
       },
       {
@@ -102,7 +97,7 @@ const EVENTS = [
   {
     id: 2,
     name: 'ng-nl',
-    date: '4/15/2037',
+    date: new Date ('4/15/2037'),
     time: '9:00 am',
     price: 950.00,
     imageUrl: '/assets/images/ng-nl.png',
@@ -156,7 +151,7 @@ const EVENTS = [
   {
     id: 3,
     name: 'ng-conf 2037',
-    date: '5/4/2037',
+    date: new Date ('5/4/2037'),
     time: '9:00 am',
     price: 759.00,
     imageUrl: '/assets/images/ng-conf.png',
@@ -233,7 +228,7 @@ const EVENTS = [
   {
     id: 4,
     name: 'UN Angular Summit',
-    date: '6/10/2037',
+    date: new Date ('6/10/2037'),
     time: '8:00 am',
     price: 800.00,
     imageUrl: '/assets/images/basic-shield.png',
@@ -249,8 +244,7 @@ const EVENTS = [
         presenter: "Sir Dave Smith",
         duration: 2,
         level: "Beginner",
-        abstract: `Yes, we all work with cyborgs and androids and Martians, but 
-          we probably don't realize that sometimes our internal biases can make it difficult for
+        abstract: `Yes, we all work with cyborgs and androids and Martians, but we probably don't realize that sometimes our internal biases can make it difficult for
           these well-designed coworkers to really feel at home coding alongside us. This talk will
           look at things we can do to recognize our biases and counteract them.`,
         voters: ['bradgreen', 'igorminar']
@@ -282,7 +276,7 @@ const EVENTS = [
   {
     id: 5,
     name: 'ng-vegas',
-    date: '2/10/2037',
+    date: new Date ('2/10/2037'),
     time: '9:00 am',
     price: 400.00,
     imageUrl: '/assets/images/ng-vegas.png',
@@ -298,8 +292,7 @@ const EVENTS = [
         presenter: "John Papa",
         duration: 1,
         level: "Intermediate",
-        abstract: `No, this talk isn't about slot machines. We all know that 
-          Angular is used in most waiter-bots and coke vending machines, but
+        abstract: `No, this talk isn't about slot machines. We all know that Angular is used in most waiter-bots and coke vending machines, but
           did you know that was also used to write the core engine in the majority
           of voting machines? This talk will look at how all presidential elections
           are now determined by Angular code.`,

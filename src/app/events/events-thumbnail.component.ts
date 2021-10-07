@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IEvent } from './index';
 
 
 
@@ -36,10 +37,12 @@ import { Component, Input } from '@angular/core';
 export class EventsThumbnailComponent {
 
   // This Input tells Angular that this event will be passed from another component. This Input is used when building a child component in order to give that child component their data
-  @Input() event: any;
+  @Input() event: IEvent;
 
   getStartTimeClass():any {
-    if (this.event && this.event.time === '8:00 am') { return 'green bold'; }
+    if (this.event && this.event.time === '8:00 am') {
+      return 'green bold';
+    }
     return '';
   }
 

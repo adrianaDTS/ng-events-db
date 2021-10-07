@@ -19,6 +19,7 @@ import { Error404Component } from './errors/404.component';
 
 // Services (providers)
 import { ToastrService } from './commons/toastr.service';
+import { AuthService } from './user/auth.service';
 
 @NgModule({
   // Use for importing other modules
@@ -38,12 +39,14 @@ import { ToastrService } from './commons/toastr.service';
     Error404Component
   ],
 
-  // Services are added as providers
+  // Services are added as providers.
+  // Providers are shared among NgModules, but is not the same for imports and declarations
   providers: [
     EventService,
     ToastrService,
     EventRouteActivator,
     EventListResolver,
+    AuthService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState

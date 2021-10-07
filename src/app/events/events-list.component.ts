@@ -1,8 +1,9 @@
-import { toBase64String } from "@angular/compiler/src/output/source_map";
 import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { ToastrService } from "../commons/toastr.service";
 import { EventService } from "./shared/event.service";
+import { IEvent } from './index';
+
 
 declare let toastr;
 @Component({
@@ -20,7 +21,7 @@ declare let toastr;
 })
 
 export class EventsListComponent {
-  events: any[];
+  events: IEvent[];
 
   /* It's not a good idea to put things that are going to be long running in
   the constructor, but eventually this part will be an AJAX request. */

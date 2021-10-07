@@ -8,6 +8,7 @@ export class EventRouteActivator implements CanActivate {
 
 
   // to prevent the user to navigate to unexisting pages
+  // '!!' is used to cast to boolean, and '+? to cast to number
   canActivate(route: ActivatedRouteSnapshot) {
     const eventExist = !!this.eventService.getEvent(+route.params['id']);
 
