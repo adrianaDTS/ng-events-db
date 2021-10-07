@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
       <br />
       <br />
       <button type="submit" class="btn btn-primary">Save</button>
-      <button type="button" class="btn btn-default">Cancel</button>
+      <button type="button" class="btn btn-default" style="margin-left: 12px">Cancel</button>
     </div>
   `,
 })

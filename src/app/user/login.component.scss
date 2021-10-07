@@ -1,0 +1,13 @@
+.container-label {
+  display: flex;
+  justify-content: space-between;
+
+  > em {
+    color: #f97924;
+    font-size: 14px;
+  }
+
+  > label {
+    font-size: 14px;
+  }
+}

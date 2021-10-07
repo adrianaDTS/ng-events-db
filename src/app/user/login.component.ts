@@ -3,13 +3,15 @@ import { AuthService } from "./auth.service";
 import { Router } from "@angular/router";
 
 @Component({
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 
 export class LoginComponent {
   // these fields are not going to be use directly in the omponent, but Angular required them to be here for the ngModel data binding
   userName;
   password;
+  mouseoverLogin;
 
   constructor(private authService: AuthService, private router: Router) {
 

@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
     <br />
     <br />
     <button type="submit" class="btn btn-primary">Save</button>
-    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-default" style="margin-left: 12px" (click)="cancel()">Cancel</button>
   </div>
   `
 })
