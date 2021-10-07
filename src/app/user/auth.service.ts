@@ -17,4 +17,9 @@ export class AuthService {
     // '!!' is used to cast to boolean
     return !!this.currentUser;
   }
+
+  updateCurrentUser(firstName: string, lastName: string) {
+    this.currentUser.firstName = firstName;
+    this.currentUser.lastName = lastName;
+  };
 }
