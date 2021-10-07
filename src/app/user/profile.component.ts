@@ -1,33 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 
 @Component({
   templateUrl: './profile.component.html',
+  styleUrls: ['./login.component.scss']
 })
 
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
+  private firstName: FormControl;
+  private lastName: FormControl;
 
   constructor(private authService: AuthService, private router: Router) { };
 
   ngOnInit() {
 
     // the parameters here are to prepopulate the firstName and lastName inputs
-    let firstName = new FormControl(this.authService.currentUser.firstName);
-    let lastName = new FormControl(this.authService.currentUser.lastName);
+    this.firstName = new FormControl(this.authService.currentUser.firstName, Validators.required);
+    this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required);
 
     this.profileForm = new FormGroup({
-      firstName: firstName,
-      lastName: lastName
+      firstName: this.firstName,
+      lastName: this.lastName
     });
   }
 
   saveProfile(formValues) {
-    this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
-    this.router.navigate(['events']);
+    if (this.profileForm.valid) {
+      this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
+      this.router.navigate(['events']);
+    }
+  }
+
+  // the validation can be implement in the component file, so it can be unit tested
+  validateFirstName() {
+    return this.firstName.valid ||
+      this.firstName.untouched;
+  }
+
+  validateLastName() {
+    return this.lastName.valid ||
+      this.lastName.untouched;
   }
 
   cancel() {
