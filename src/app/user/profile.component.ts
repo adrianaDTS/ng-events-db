@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 
 @Component({
   templateUrl: './profile.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss', './profile.component.scss']
 })
 
 export class ProfileComponent implements OnInit {
@@ -19,8 +19,15 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
 
     // the parameters here are to prepopulate the firstName and lastName inputs
-    this.firstName = new FormControl(this.authService.currentUser.firstName, Validators.required);
-    this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required);
+    // the validators can have multiple validating steps (in an array)
+    this.firstName = new FormControl(
+      this.authService.currentUser.firstName,
+      [Validators.required, Validators.pattern('[a-zA-Z].*')]
+    );
+    this.lastName = new FormControl(
+      this.authService.currentUser.lastName,
+      Validators.required
+    );
 
     this.profileForm = new FormGroup({
       firstName: this.firstName,
