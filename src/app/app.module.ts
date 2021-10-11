@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, ActivatedRouteSnapshot } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   EventDetailsComponent,
@@ -25,6 +26,8 @@ import { AuthService } from './user/auth.service';
   // Use for importing other modules
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
   ],
 

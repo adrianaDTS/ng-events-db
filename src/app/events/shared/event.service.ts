@@ -10,7 +10,7 @@ import { IEvent } from ".";
 export class EventService {
 
   // the return type here is subject, not IEvent, because we are using observables, but we can specify the data type of it (IEvent), , but subject it a little too specific, so better use the type Observable
-  getEvents():Observable<IEvent[]> {
+  getEvents(): Observable<IEvent[]> {
 
     // subject is a type of observable
     let subject = new Subject<IEvent[]>();
@@ -20,16 +20,22 @@ export class EventService {
     return subject;
   }
 
-  getEvent(id: number):IEvent {
+  getEvent(id: number): IEvent {
     return EVENTS.find(event => event.id === id);
+  }
+
+  saveEvent(event) {
+    event.id = 999;
+    event.session = [];
+    EVENTS.push(event);
   }
 }
 
-const EVENTS:IEvent[] = [
+const EVENTS: IEvent[] = [
   {
     id: 1,
     name: 'Angular Connect',
-    date: new Date ('9/26/2036'),
+    date: new Date('9/26/2036'),
     time: '10:00 am',
     price: 599.99,
     imageUrl: '/assets/images/angularconnect-shield.png',
@@ -97,7 +103,7 @@ const EVENTS:IEvent[] = [
   {
     id: 2,
     name: 'ng-nl',
-    date: new Date ('4/15/2037'),
+    date: new Date('4/15/2037'),
     time: '9:00 am',
     price: 950.00,
     imageUrl: '/assets/images/ng-nl.png',
@@ -151,7 +157,7 @@ const EVENTS:IEvent[] = [
   {
     id: 3,
     name: 'ng-conf 2037',
-    date: new Date ('5/4/2037'),
+    date: new Date('5/4/2037'),
     time: '9:00 am',
     price: 759.00,
     imageUrl: '/assets/images/ng-conf.png',
@@ -228,7 +234,7 @@ const EVENTS:IEvent[] = [
   {
     id: 4,
     name: 'UN Angular Summit',
-    date: new Date ('6/10/2037'),
+    date: new Date('6/10/2037'),
     time: '8:00 am',
     price: 800.00,
     imageUrl: '/assets/images/basic-shield.png',
@@ -276,7 +282,7 @@ const EVENTS:IEvent[] = [
   {
     id: 5,
     name: 'ng-vegas',
-    date: new Date ('2/10/2037'),
+    date: new Date('2/10/2037'),
     time: '9:00 am',
     price: 400.00,
     imageUrl: '/assets/images/ng-vegas.png',
