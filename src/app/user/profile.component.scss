@@ -1,5 +1,7 @@
 .error {
-  input {
+  input,
+  select,
+  textarea {
     background-color: #e3c3c5;
 
     &::placeholder {
