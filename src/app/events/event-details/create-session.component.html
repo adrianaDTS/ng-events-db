@@ -80,8 +80,18 @@
           *ngIf="
             abstract.invalid && abstract.dirty && abstract?.errors.maxLength
           "
-          >Can't exceed 400 characters</em
         >
+          Can't exceed 400 characters
+        </em>
+        <em
+          *ngIf="
+            abstract.invalid &&
+            abstract.dirty &&
+            abstract?.errors.restrictedWords
+          "
+        >
+          Restricted words found: {{ abstract.errors.restrictedWords }}
+        </em>
       </div>
 
       <textarea
