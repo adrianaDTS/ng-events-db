@@ -3,7 +3,10 @@
     <div class="well">
       <h4>{{ session.name }}</h4>
       <h6>{{ session.presenter }}</h6>
-      <span>Duration: {{ session.duration }}</span
+      <span
+        >Duration: {{ session.duration }}
+        <span *ngIf="session.duration === 1">hour</span>
+        <span *ngIf="session.duration > 1">hours</span></span
       ><br />
       <span>Level: {{ session.level }}</span>
       <p>{{ session.abstract }}</p>
