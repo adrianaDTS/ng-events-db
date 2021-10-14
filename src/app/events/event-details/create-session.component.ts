@@ -13,6 +13,7 @@ import { ISession, restrictedWords } from "../shared/index";
 export class CreateSessionComponent {
 
   @Output() saveNewSession = new EventEmitter();
+  @Output() cancelAddSession = new EventEmitter();
   newSessionForm: FormGroup;
   name: FormControl;
   presenter: FormControl;
@@ -55,6 +56,6 @@ export class CreateSessionComponent {
   }
 
   cancel() {
-    this.location.back();
+    this.cancelAddSession.emit()
   }
 }
