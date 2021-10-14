@@ -27,6 +27,9 @@ import { CollapsibleWellComponent } from './commons/collapsible-well.component';
 import { ToastrService } from './commons/toastr.service';
 import { AuthService } from './user/auth.service';
 
+// Icons library
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   // Use for importing other modules
   imports: [
@@ -34,6 +37,7 @@ import { AuthService } from './user/auth.service';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
+    FontAwesomeModule
   ],
 
   // To add a component, pipe or directive, it must be firstly declared:
