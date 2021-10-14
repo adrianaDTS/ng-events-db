@@ -53,25 +53,27 @@
       />
     </div>
     <!-- We can't put event inside a button that is disabled, so the mouse enter & mouse leave events should go in a wrapping span, e.g. -->
-    <span
-      (mouseenter)="mouseoverLogin = true"
-      (mouseleave)="mouseoverLogin = false"
-    >
-      <button
-        type="submit"
-        [disabled]="loginForm.invalid"
-        class="btn btn-primary"
+    <div style="margin-bottom: 12px">
+      <span
+        (mouseenter)="mouseoverLogin = true"
+        (mouseleave)="mouseoverLogin = false"
       >
-        Login
-      </button></span
-    >
-    <button
-      type="button"
-      (click)="cancel()"
-      class="btn btn-default"
-      style="margin-left: 12px"
-    >
-      Cancel
-    </button>
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="btn btn-primary"
+        >
+          Login
+        </button></span
+      >
+      <button
+        type="button"
+        (click)="cancel()"
+        class="btn btn-default"
+        style="margin-left: 12px"
+      >
+        Cancel
+      </button>
+    </div>
   </form>
 </div>

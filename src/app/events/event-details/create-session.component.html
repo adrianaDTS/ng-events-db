@@ -78,7 +78,9 @@
         >
         <em
           *ngIf="
-            abstract.invalid && abstract.dirty && abstract?.errors.maxLength
+            !!abstract.invalid &&
+            !!abstract.dirty &&
+            !!abstract?.errors.maxLength
           "
         >
           Can't exceed 400 characters
@@ -90,25 +92,23 @@
             abstract?.errors.restrictedWords
           "
         >
-          Restricted words found: {{ abstract.errors.restrictedWords }}
+          Restricted words found: {{ abstract.restrictedWords }}
         </em>
       </div>
 
       <textarea
         formControlName="abstract"
         id="abstract"
-        rows="3"
+        rows="5"
         class="form-control"
         placeholder="Abstract..."
       ></textarea>
     </div>
-    <button
-      type="submit"
-      [disabled]="newSessionForm.invalid"
-      class="btn btn-primary"
-    >
-      Save
-    </button>
-    <button type="button" class="btn btn-default">Cancel</button>
+    <div style="margin-bottom: 12px">
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button style="margin-left: 12px" type="button" class="btn btn-default">
+        Cancel
+      </button>
+    </div>
   </form>
 </div>

@@ -209,15 +209,17 @@
         *ngIf="newEventForm.controls.imageUrl?.valid"
       />
     </div>
-
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button
-      type="button"
-      [disabled]="newEventForm.invalid"
-      class="btn btn-default"
-      (click)="cancel()"
-    >
-      Cancel
-    </button>
+    <div style="margin-bottom: 12px">
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button
+        type="button"
+        [disabled]="newEventForm.invalid"
+        class="btn btn-default"
+        (click)="cancel()"
+        style="margin-left: 12px"
+      >
+        Cancel
+      </button>
+    </div>
   </form>
 </div>

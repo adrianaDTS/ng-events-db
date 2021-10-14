@@ -46,5 +46,6 @@ export class CreateSessionComponent {
     };
 
     console.log(session);
+    console.log(this.abstract.errors);
   }
 }

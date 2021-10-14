@@ -1,7 +1,7 @@
 import { FormControl } from "@angular/forms";
 
-  // custom validator (function) for abstrac's textarea
-  export function restrictedWords(words) {
+// custom validator (function) for abstrac's textarea
+export function restrictedWords(words) {
   return (control: FormControl): { [key: string]: any; } => {
 
     if (!words) return null;
