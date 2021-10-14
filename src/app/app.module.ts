@@ -11,7 +11,8 @@ import {
   CreateEventComponent,
   EventRouteActivator,
   EventListResolver,
-  CreateSessionComponent
+  CreateSessionComponent,
+  SessionListComponent
 } from './events/index';
 
 import { EventsAppComponent } from './app.component';
@@ -41,7 +42,8 @@ import { AuthService } from './user/auth.service';
     NavBarComponent,
     CreateEventComponent,
     Error404Component,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
   ],
 
   // Services are added as providers.
