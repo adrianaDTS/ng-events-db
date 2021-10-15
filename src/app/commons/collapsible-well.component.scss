@@ -1,0 +1,19 @@
+.well {
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-collapsible {
+    width: 100%;
+  }
+}
+
+fa-icon {
+  font-size: 18px;
+  transition: 0.4s linear all;
+
+  &:hover {
+    color: #f97924;
+  }
+}
