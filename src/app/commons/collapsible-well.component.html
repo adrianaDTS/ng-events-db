@@ -1,0 +1,13 @@
+<div (click)="toggleContent()" class="well pointable well-collapsible">
+  <div class="well-header">
+    <h4>
+      <!-- NG - selector of CSS class -->
+      <ng-content select=".well-title"></ng-content>
+    </h4>
+    <fa-icon *ngIf="!visible" [icon]="faPlusCircle"></fa-icon>
+    <fa-icon *ngIf="visible" [icon]="faMinusCircle"></fa-icon>
+  </div>
+
+  <!-- NG - selector of HTML attribute -->
+  <ng-content select="[well-body]" *ngIf="visible"></ng-content>
+</div>

@@ -4,6 +4,11 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  &-wrapper {
+    gap: 10px;
+  }
+
   &-collapsible {
     width: 100%;
   }

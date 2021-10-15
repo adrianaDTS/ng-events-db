@@ -210,10 +210,15 @@
       />
     </div>
     <div style="margin-bottom: 12px">
-      <button type="submit" class="btn btn-primary">Save</button>
+      <button
+        [disabled]="newEventForm.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Save
+      </button>
       <button
         type="button"
-        [disabled]="newEventForm.invalid"
         class="btn btn-default"
         (click)="cancel()"
         style="margin-left: 12px"

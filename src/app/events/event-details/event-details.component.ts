@@ -10,8 +10,8 @@ import { IEvent, ISession } from '../shared/index';
   .event-image { height: 100px; }
   .pad-left { margin-left: 5px; }
   a { cursor: pointer; }
-  .header { display: flex; justify-content: space-between; align-items: flex-end;}
-  .header > h3, a {margin: 5px;}
+  .sessions-header { margin-bottom: 12px;display: flex; justify-content: space-between; align-items: flex-end;}
+  .sessions-header > h3, a {margin: 0;}
   `]
 
 })
