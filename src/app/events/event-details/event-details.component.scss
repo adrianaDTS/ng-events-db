@@ -1,0 +1,31 @@
+.container {
+  padding: 0 20px;
+}
+
+.event-image {
+  height: 100px;
+}
+
+.pad-left {
+  margin-left: 5px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.sessions-header {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > h3,
+  a {
+    margin: 0;
+  }
+}
+
+button {
+  margin-right: 8px;
+}

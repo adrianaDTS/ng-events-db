@@ -31,9 +31,38 @@
   </div>
 
   <hr />
+  <h3 *ngIf="!addMode">Sessions:</h3>
   <div class="sessions-header">
-    <h3 *ngIf="!addMode">Sessions:</h3>
-
+    <div *ngIf="!addMode">
+      <button
+        class="btn btn-default"
+        [class.active]="filterBy === 'all'"
+        (click)="filterBy = 'all'"
+      >
+        All
+      </button>
+      <button
+        class="btn btn-default"
+        [class.active]="filterBy === 'beginner'"
+        (click)="filterBy = 'beginner'"
+      >
+        Beginner
+      </button>
+      <button
+        class="btn btn-default"
+        [class.active]="filterBy === 'intermediate'"
+        (click)="filterBy = 'intermediate'"
+      >
+        Intermediate
+      </button>
+      <button
+        class="btn btn-default"
+        [class.active]="filterBy === 'advanced'"
+        (click)="filterBy = 'advanced'"
+      >
+        Advanced
+      </button>
+    </div>
     <a *ngIf="!addMode" (click)="addSession()">Add session</a>
   </div>
 

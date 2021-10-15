@@ -1,24 +1,18 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { EventService } from "../shared/event.service";
 import { ActivatedRoute } from "@angular/router";
 import { IEvent, ISession } from '../shared/index';
 
 @Component({
   templateUrl: './event-details.component.html',
-  styles: [`
-  .container { padding: 0 20px; }
-  .event-image { height: 100px; }
-  .pad-left { margin-left: 5px; }
-  a { cursor: pointer; }
-  .sessions-header { margin-bottom: 12px;display: flex; justify-content: space-between; align-items: flex-end;}
-  .sessions-header > h3, a {margin: 0;}
-  `]
+  styleUrls: ['./event-details.component.scss']
 
 })
 
-export class EventDetailsComponent {
+export class EventDetailsComponent implements OnInit {
   event: IEvent;
   addMode: boolean;
+  filterBy: string = 'all';
 
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
