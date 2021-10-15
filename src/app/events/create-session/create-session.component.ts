@@ -8,6 +8,7 @@ import { ISession, restrictedWords } from "../shared/index";
   selector: 'create-session',
   templateUrl: './create-session.component.html',
   styleUrls: ['../../user/login.component.scss', '../../user/profile.component.scss']
+
 })
 
 export class CreateSessionComponent {

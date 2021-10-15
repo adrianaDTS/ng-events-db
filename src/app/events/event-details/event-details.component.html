@@ -11,7 +11,7 @@
     <div class="col-md-6">
       <p><strong>Date:</strong> {{ event?.date }}</p>
       <p><strong>Time:</strong> {{ event?.time }}</p>
-      <p><strong>Price:</strong> ${{ event?.price }}</p>
+      <p><strong>Price:</strong> {{ event?.price }} €</p>
     </div>
     <div class="col-md-6">
       <address *ngIf="event?.location">

@@ -21,7 +21,7 @@ import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 
 // Common components
-import { CollapsibleWellComponent } from './commons/collapsible-well.component';
+import { CollapsibleWellComponent } from './commons/collapsible-well/collapsible-well.component';
 
 // Services (providers)
 import { ToastrService } from './commons/toastr.service';

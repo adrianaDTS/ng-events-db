@@ -11,3 +11,15 @@
     font-size: 14px;
   }
 }
+
+.error {
+  input,
+  select,
+  textarea {
+    background-color: #e3c3c5;
+
+    &::placeholder {
+      color: #575757;
+    }
+  }
+}
