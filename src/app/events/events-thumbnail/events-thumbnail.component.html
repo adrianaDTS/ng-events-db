@@ -1,0 +1,26 @@
+<article [routerLink]="['/events', event.id]" class="well hoverwell thumbnail">
+  <!-- Add pipes (|) to transform to uppercase the event's name
+    and the date to a human format-->
+  <h2 h2>{{ event?.name | uppercase }}</h2>
+  <p><strong>Date:</strong> {{ event?.date | date: "dd-MM-Y" }}</p>
+  <p [ngClass]="getStartTimeClass()" [ngSwitch]="event?.time">
+    <strong>Time: </strong>{{ event?.time }}
+    <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
+    <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
+    <span *ngSwitchDefault>(Normal Start)</span>
+  </p>
+
+  <p><strong>Price:</strong> {{ event?.price | currency:'EUR' }}</p>
+  <!-- The p element is not render if the location doesn't exits -->
+  <p *ngIf="event?.location">
+    <span><strong>Location: </strong>{{ event?.location?.address }},</span>
+    <span class="pad-left"
+      >{{ event?.location?.city }}, {{ event?.location?.country }}</span
+    >
+  </p>
+  <!--  The p element is hidden if the onlineUrl doesn't exist -->
+  <p [hidden]="!event?.onlineUrl">
+    <strong>Online URL:</strong>
+    <a [href]="event?.onlineUrl" class="pad-left">{{ event?.onlineUrl }}</a>
+  </p>
+</article>
