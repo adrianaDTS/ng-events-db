@@ -22,7 +22,13 @@ import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 
 // Services (providers)
-import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent } from './commons/index';
+import {
+  JQ_TOKEN,
+  TOASTR_TOKEN,
+  Toastr,
+  CollapsibleWellComponent,
+  SimpleModal
+} from './commons/index';
 import { AuthService } from './user/auth.service';
 
 // Icons library
@@ -52,6 +58,7 @@ let jQuery: Toastr = window['$'];
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
+    SimpleModal,
     DurationPipe
   ],
 
@@ -68,6 +75,10 @@ let jQuery: Toastr = window['$'];
     {
       provide: TOASTR_TOKEN,
       useValue: toastr
+    },
+    {
+      provide: JQ_TOKEN,
+      useValue: jQuery
     },
     /* This will be the same syntax as:
     { provide: EventRouteActivator, useClass: EventRouteActivator } */
