@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 
 // subject observable. Observables are are like streams of data, kind of like arrays where the data arrives over time
 import { Observable, Subject } from "rxjs";
-import { IEvent } from ".";
+import { IEvent, ISession } from "./event.model";
 
 // It's a good practice to mark services as injectable (adding the injectable decorator).
 // It's only required when you inject a service that also injects other services as dependencies of their own.
@@ -35,6 +35,32 @@ export class EventService {
     let index = EVENTS.findIndex(x => x.id = event.id);
 
     EVENTS[index] = event;
+  }
+
+  searchSessions(searchTerm: string) {
+    let term = searchTerm.toLocaleLowerCase();
+    let results: ISession[] = [];
+
+    EVENTS.forEach(event => {
+      let matchingSessions = event.sessions.filter(session =>
+        session.name.toLocaleLowerCase().indexOf(term) > -1);
+
+      // quicker way to add the event ID to each session
+      matchingSessions = matchingSessions.map((session: any) => {
+        session.eventId = event.id;
+        return session;
+      });
+
+      results = results.concat(matchingSessions);
+    });
+
+    let emitter = new EventEmitter(true);
+
+    // to simulate and actual petition to an HTTP
+    setTimeout(() => {
+      emitter.emit(results);
+    }, 100);
+    return emitter;
   }
 }
 
