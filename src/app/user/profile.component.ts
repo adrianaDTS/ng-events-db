@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TOASTR_TOKEN, Toastr } from '../commons/toastr.service';
 
 import { AuthService } from './auth.service';
 
@@ -8,6 +9,8 @@ import { AuthService } from './auth.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./login.component.scss', './profile.component.scss']
 })
+
+
 
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
@@ -18,7 +21,11 @@ export class ProfileComponent implements OnInit {
     /* here we registered the AuthService class, and Angular 2
     creates an instance of that class and gives us that instance
     whenever we reference it in a constructor function */
-    private authService: AuthService
+    private authService: AuthService,
+
+    /* Inject is a decorator, just like Component, that allows to
+    use a separete Token besides the type of the constructor parameter */
+    @Inject(TOASTR_TOKEN) private toastr: Toastr
   ) {
 
   };
@@ -46,6 +53,7 @@ export class ProfileComponent implements OnInit {
     if (this.profileForm.valid) {
       this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
       this.router.navigate(['events']);
+      this.toastr.success('Profile saved! 🥳');
     }
   }
 
