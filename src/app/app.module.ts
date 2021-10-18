@@ -21,17 +21,15 @@ import { NavBarComponent } from './nav/navbar-component';
 import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 
-// Common components
-import { CollapsibleWellComponent } from './commons/collapsible-well/collapsible-well.component';
-
 // Services (providers)
-import { TOASTR_TOKEN, Toastr } from './commons/toastr.service';
+import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent } from './commons/index';
 import { AuthService } from './user/auth.service';
 
 // Icons library
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-declare let toastr: Toastr;
+let toastr: Toastr = window['toastr'];
+let jQuery: Toastr = window['$'];
 @NgModule({
   // Use for importing other modules
   imports: [
