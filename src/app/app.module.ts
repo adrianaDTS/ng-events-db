@@ -25,12 +25,13 @@ import { Error404Component } from './errors/404.component';
 import { CollapsibleWellComponent } from './commons/collapsible-well/collapsible-well.component';
 
 // Services (providers)
-import { ToastrService } from './commons/toastr.service';
+import { TOASTR_TOKEN, Toastr } from './commons/toastr.service';
 import { AuthService } from './user/auth.service';
 
 // Icons library
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+declare let toastr: Toastr;
 @NgModule({
   // Use for importing other modules
   imports: [
@@ -60,7 +61,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   // Providers are shared among NgModules, but is not the same for imports and declarations
   providers: [
     EventService,
-    ToastrService,
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+    },
     EventRouteActivator,
     EventListResolver,
     AuthService,

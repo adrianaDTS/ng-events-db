@@ -1,24 +1,13 @@
-import { Injectable } from "@angular/core";
+import { InjectionToken } from "@angular/core";
 
-declare let toastr: any;
 
-@Injectable()
+/* this creates a token that can be used to look up the toastr object
+inside of the dependency injection registry */
+export let TOASTR_TOKEN = new InjectionToken<any>('toastr');
 
-// Needed to wrapped all the Tastr methods that are going to be used.
-export class ToastrService {
-  success(message: string, title?: string) {
-    toastr.success(message, title);
-  }
-
-  info(message: string, title?: string) {
-    toastr.info(message, title);
-  }
-
-  warning(message: string, title?: string) {
-    toastr.warning(message, title);
-  }
-
-  error(message: string, title?: string) {
-    toastr.error(message, title);
-  }
+export interface Toastr {
+  succes(msg: string, title?: string): void;
+  info(msg: string, title?: string): void;
+  warning(msg: string, title?: string): void;
+  error(msg: string, title?: string): void;
 }

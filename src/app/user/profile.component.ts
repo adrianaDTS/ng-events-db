@@ -14,7 +14,14 @@ export class ProfileComponent implements OnInit {
   private firstName: FormControl;
   private lastName: FormControl;
 
-  constructor(private authService: AuthService, private router: Router) { };
+  constructor(private router: Router,
+    /* here we registered the AuthService class, and Angular 2
+    creates an instance of that class and gives us that instance
+    whenever we reference it in a constructor function */
+    private authService: AuthService
+  ) {
+
+  };
 
   ngOnInit() {
 
