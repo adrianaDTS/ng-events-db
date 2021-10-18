@@ -61,12 +61,24 @@ declare let toastr: Toastr;
   // Providers are shared among NgModules, but is not the same for imports and declarations
   providers: [
     EventService,
+    /* useExisting is also known as the "alias provider", and there's
+    no so much scenarios when it will be used. E.g.: to minimize and API */
+
+    /* useFactory is even more complex. You register a class and you're going to give this useFactory
+    parameter a function that is a factory. You can after, call the function and pass in some parameters.
+    This allows you to parameterize the creation of an object */
     {
       provide: TOASTR_TOKEN,
       useValue: toastr
     },
+    /* This will be the same syntax as:
+    { provide: EventRouteActivator, useClass: EventRouteActivator } */
     EventRouteActivator,
     EventListResolver,
+    /* if someone ask for the AuthService, they're going to get an instance of the EventService:
+    { provide: AuthService, useClass: EventService }
+    This is used when you have a very specific kind of implementation of a class, but you have a generic
+    class that you're using */
     AuthService,
     {
       provide: 'canDeactivateCreateEvent',
