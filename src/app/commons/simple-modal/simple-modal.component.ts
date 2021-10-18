@@ -4,10 +4,14 @@ import { Component, Input } from "@angular/core";
 @Component({
   selector: 'simple-modal',
   templateUrl: './simple-modal.component.html',
-  styleUrls: ['./simple-modal.component.scss']
+  styles: [`
+  .modal-body {
+  height: 300px;
+  overflow-y: scroll;
+}`]
 })
 
 
-export class SimpleModal {
+export class SimpleModalComponent {
   @Input() title: string;
 }

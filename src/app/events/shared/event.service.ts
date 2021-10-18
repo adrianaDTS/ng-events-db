@@ -45,7 +45,7 @@ export class EventService {
       let matchingSessions = event.sessions.filter(session =>
         session.name.toLocaleLowerCase().indexOf(term) > -1);
 
-      // quicker way to add the event ID to each session
+      // quick and easy way to add the event ID to each session
       matchingSessions = matchingSessions.map((session: any) => {
         session.eventId = event.id;
         return session;

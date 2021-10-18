@@ -27,7 +27,8 @@ import {
   TOASTR_TOKEN,
   Toastr,
   CollapsibleWellComponent,
-  SimpleModal
+  SimpleModalComponent,
+  ModalTriggerDirective
 } from './commons/index';
 import { AuthService } from './user/auth.service';
 
@@ -58,7 +59,8 @@ let jQuery: Toastr = window['$'];
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    SimpleModal,
+    SimpleModalComponent,
+    ModalTriggerDirective,
     DurationPipe
   ],
 

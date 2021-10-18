@@ -63,7 +63,8 @@
             placeholder="Search sessions"
           />
         </div>
-        <button class="btn btn-default" style="margin-left: 12px">
+        <!-- With the directive "modal-trigger" we can attach new functionality to an existing DOM node -->
+        <button class="btn btn-default" style="margin-left: 12px" modal-trigger>
           Search
         </button>
       </form>
@@ -76,8 +77,8 @@
     <a
       href=""
       class="list-group-item"
-      *ngFor="let sessions of foundSessions"
-      [routerLink]="['/events', session.eventId]"
+      *ngFor="let session of foundSessions"
+      [routerLink]="['events', session.eventId]"
     >
       {{ session.name }}
     </a>
