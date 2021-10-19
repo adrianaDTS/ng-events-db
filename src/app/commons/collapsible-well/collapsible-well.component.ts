@@ -10,8 +10,9 @@ import {faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 export class CollapsibleWellComponent {
   visible: boolean = false;
 
-  faPlusCircle = faPlusCircle;
-  faMinusCircle = faMinusCircle;
+  // Icons
+  plusIcon = faPlusCircle;
+  minuIcon = faMinusCircle;
 
   toggleContent() {
     this.visible = !this.visible;

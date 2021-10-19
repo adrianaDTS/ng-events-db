@@ -10,10 +10,6 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 })
 
 export class UpVote {
-  // icons
-  heartIcon = faHeart;
-  heartIconSolid = faHeartSolid;
-
   @Input() count: number;
   @Input() voted: Boolean;
 
@@ -23,4 +19,8 @@ export class UpVote {
   onClick() {
     this.vote.emit({});
   }
+
+  // Icons
+  heartIcon = faHeart;
+  heartIconSolid = faHeartSolid;
 }
