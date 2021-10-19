@@ -1,5 +1,12 @@
 <div class="row" *ngFor="let session of visibleSessions">
-  <div>
+  <div class="container-vote">
+    <upvote
+      (vote)="toggleVote(session)"
+      [count]="session.voters.length"
+      [voted]="userHasVoted(session)"
+    ></upvote>
+  </div>
+  <div class="container-well">
     <collapsible-well>
       <div class="well-title">
         <span>{{ session.name }}</span>

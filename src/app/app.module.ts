@@ -13,7 +13,9 @@ import {
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpVote,
+  VoterService
 } from './events/index';
 
 import { EventsAppComponent } from './app.component';
@@ -61,7 +63,8 @@ let jQuery: Toastr = window['$'];
     CollapsibleWellComponent,
     SimpleModalComponent,
     ModalTriggerDirective,
-    DurationPipe
+    DurationPipe,
+    UpVote
   ],
 
   // Services are added as providers.
@@ -91,6 +94,7 @@ let jQuery: Toastr = window['$'];
     This is used when you have a very specific kind of implementation of a class, but you have a generic
     class that you're using */
     AuthService,
+    VoterService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState

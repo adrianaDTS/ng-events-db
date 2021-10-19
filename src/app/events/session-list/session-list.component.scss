@@ -1,4 +1,6 @@
 .well {
+  margin: 0;
+  padding: 0;
   &-title {
     transition: 0.4s linear all;
 
@@ -10,5 +12,21 @@
 
   &-title:hover {
     transform: scale(1.04);
+  }
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  margin: 12px 0;
+}
+
+.container {
+  &-vote {
+    width: 5%;
+  }
+
+  &-well {
+    width: 95%;
   }
 }
