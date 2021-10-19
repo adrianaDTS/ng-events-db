@@ -9,7 +9,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
   styleUrls: ['./upvote.component.scss']
 })
 
-export class UpVote {
+export class UpVoteComponent {
   @Input() count: number;
   @Input() voted: Boolean;
 
