@@ -27,6 +27,7 @@
   }
 
   &-well {
-    width: 95%;
+    align-self: stretch;
+    flex-grow: 1;
   }
 }

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { faHeart, fas } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { faHeart, fas } from '@fortawesome/free-solid-svg-icons';
 export class UpVote {
   // icons
   heartIcon = faHeart;
-  fas = fas;
+  heartIconSolid = faHeartSolid;
 
   @Input() count: number;
   @Input() voted: Boolean;
