@@ -63,22 +63,27 @@
             placeholder="Search sessions"
           />
         </div>
-        <!-- With the directive "modal-trigger" we can attach new functionality to an existing DOM node -->
-        <button class="btn btn-default" style="margin-left: 12px" modal-trigger>
+        <!-- With the directive "modal-trigger" we can attach new functionality to an existing DOM node
+        Specifign "searchResults, we are binding the modal-trigger for this particular modal dialog box "-->
+        <button
+          class="btn btn-default"
+          style="margin-left: 12px"
+          modal-trigger="searchResults"
+        >
           Search
         </button>
       </form>
     </div>
   </div>
 </nav>
-
-<simple-modal title="Matching sessions">
+<!-- elementId is an input property -->
+<simple-modal elementId="searchResults" title="Matching sessions">
   <div class="list-group">
     <a
-      href=""
       class="list-group-item"
       *ngFor="let session of foundSessions"
-      [routerLink]="['events', session.eventId]"
+      [routerLink]="['/events', session.eventId]"
+      target="_blank"
     >
       {{ session.name }}
     </a>
