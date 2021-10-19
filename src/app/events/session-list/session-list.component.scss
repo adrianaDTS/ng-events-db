@@ -1,0 +1,14 @@
+.well {
+  &-title {
+    transition: 0.4s linear all;
+
+    fa-icon {
+      margin-left: 10px;
+      color: #f97924;
+    }
+  }
+
+  &-title:hover {
+    transform: scale(1.04);
+  }
+}
