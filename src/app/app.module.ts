@@ -9,13 +9,14 @@ import {
   EventsThumbnailComponent,
   EventService,
   CreateEventComponent,
-  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
+  UpVoteComponent,
+  EventRouteActivator,
   DurationPipe,
-  UpVote,
-  VoterService
+  VoterService,
+  LocationValidator
 } from './events/index';
 
 import { EventsAppComponent } from './app.component';
@@ -62,9 +63,10 @@ let jQuery: Toastr = window['$'];
     SessionListComponent,
     CollapsibleWellComponent,
     SimpleModalComponent,
+    UpVoteComponent,
     ModalTriggerDirective,
     DurationPipe,
-    UpVote
+    LocationValidator
   ],
 
   // Services are added as providers.
