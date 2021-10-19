@@ -16,13 +16,17 @@ import { JQ_TOKEN } from "../jQuery.service";
 export class SimpleModalComponent {
   @Input() title: string;
   @Input() elementId: string;
+  @Input() closeOnBodyClick: string;
+
   // ViewChild is a decorator. A string is passed to it, that indicates an Angular2 local ref variable
   @ViewChild('modalcontainer') containerEl: ElementRef;
 
   constructor(@Inject(JQ_TOKEN) private $: any) { }
 
   closeModal() {
-    //  We need to access the DOM node
-    this.$(this.containerEl.nativeElement).modal('hide');
+    if (this.closeOnBodyClick.toLocaleLowerCase() === 'true') {
+      //  We need to access the DOM node
+      this.$(this.containerEl.nativeElement).modal('hide');
+    } 
   }
 }
