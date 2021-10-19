@@ -83,7 +83,6 @@
       class="list-group-item"
       *ngFor="let session of foundSessions"
       [routerLink]="['/events', session.eventId]"
-      target="_blank"
     >
       {{ session.name }}
     </a>
