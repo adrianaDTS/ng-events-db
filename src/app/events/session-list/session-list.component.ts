@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from "@angular/core";
 import { ISession } from "../shared/index";
-import { faFire } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from "../../user/auth.service";
 import { VoterService } from "../event-details/voters.service";
 
@@ -61,7 +61,7 @@ export class SessionListComponent implements OnChanges {
   }
 
   // Icons
-  faFire = faFire;
+  starIcon = faStar;
 }
 
 /* The stateless functions don't need to be inside the class,
