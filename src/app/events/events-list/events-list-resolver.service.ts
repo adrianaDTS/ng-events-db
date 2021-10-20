@@ -9,7 +9,8 @@ import { map } from 'rxjs/operators';
 export class EventListResolver implements Resolve<any> {
   constructor(private eventService: EventService) { }
 
-  // in the resolve methos we will tipicalle make an asynchronos method call like and AJAX call, and when it return, it will return their data
+  /* in the resolve method we will tipically make an asynchronos method call like
+  an AJAX call, and when it returns, it will return its data */
   resolve() {
 
     // here, map does the same as subscribe
