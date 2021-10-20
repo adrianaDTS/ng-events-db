@@ -1,33 +1,55 @@
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable, EventEmitter } from "@angular/core";
 
-// subject observable. Observables are are like streams of data, kind of like arrays where the data arrives over time
-import { Observable, Subject } from "rxjs";
+/* subject observable. Observables are are like streams of data,
+kind of like arrays where the data arrives over time */
+import { Observable, of, Subject } from "rxjs";
+import { catchError } from "rxjs/operators";
 import { IEvent, ISession } from "./event.model";
 
-// It's a good practice to mark services as injectable (adding the injectable decorator).
-// It's only required when you inject a service that also injects other services as dependencies of their own.
+/* It's a good practice to mark services as injectable (adding the injectable decorator).
+It's only required when you inject a service that also injects other services as dependencies of their own. */
 @Injectable()
 export class EventService {
 
-  // the return type here is subject, not IEvent, because we are using observables, but we can specify the data type of it (IEvent), , but subject it a little too specific, so better use the type Observable
+  constructor(private http: HttpClient) { }
+
+  /* Method to provide access to the EVENTS.
+  the return type here is subject, not IEvent, because we are using observables, but we can specify
+  the data type of it (IEvent), , but subject it a little too specific, so better use the type Observable */
   getEvents(): Observable<IEvent[]> {
+    /* With this we talk to the server to get the events.
+    Any request that comes from '/api' is going to be forwarded to the server
+    (as config in the proxy) we have running in the por 8808.
+    From now, the url that we are going to use, need to start with '/api' */
+    return this.http.get<IEvent[]>('/api/events')
+      .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])));
 
-    // subject is a type of observable
-    let subject = new Subject<IEvent[]>();
+    /* TODO Old code that needs to be transfer to the learning branch */
+    // // subject is a type of observable
+    // let subject = new Subject<IEvent[]>();
 
-    // we add data to this observable stream inside the setTimeout function to simulate asynchrony
-    setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 500);
-    return subject;
+    // // we add data to this observable stream inside the setTimeout function to simulate asynchrony
+    // setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 500);
+    // return subject;
   }
 
-  getEvent(id: number): IEvent {
-    return EVENTS.find(event => event.id === id);
+  getEvent(id: number): Observable<IEvent> {
+    return this.http.get<IEvent>('/api/events/' + id)
+      .pipe(catchError(this.handleError<IEvent>('getEvent')));
   }
 
+  /* TODO Old code that needs to be transfer to the learning branch */
+  // getEvent(id: number): IEvent {
+  //   return EVENTS.find(event => event.id === id);
+  // }
+
+  // Call to Http POST
   saveEvent(event) {
-    event.id = 999;
-    event.session = [];
-    EVENTS.push(event);
+    let options = { headers: new HttpHeaders({ 'Content-Type': 'applications/json' }) };
+    return this.http.post<IEvent>('/api/events', event, options)
+      .pipe(catchError(this.handleError<IEvent>('saveEvent')));
+
   }
 
   updateEvent(event) {
@@ -62,6 +84,14 @@ export class EventService {
     }, 100);
     return emitter;
   }
+
+  // Basic error handling ('T' is a generic type).
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
+  };
 }
 
 const EVENTS: IEvent[] = [
@@ -104,7 +134,7 @@ const EVENTS: IEvent[] = [
         presenter: "Rob Wormald",
         duration: 2,
         level: "Advanced",
-        abstract: `Angular 4 Performance is hot. In this session, we'll see 
+        abstract: `Angular 4 Performance is hot. In this session, we'll see
           how Angular gets such great performance by preloading data on your users devices before they even hit your site using the 
           new predictive algorithms and thought reading software built into Angular 4.`,
         voters: []
@@ -116,8 +146,8 @@ const EVENTS: IEvent[] = [
         duration: 2,
         level: "Advanced",
         abstract: `Even though Angular 5 is still 6 years away, we all want to know all about it so that we can spend endless hours in meetings 
-          debating if we should use Angular 4 or not. This talk will look at 
-          Angular 6 even though no code has yet been written for it. We'll 
+          debating if we should use Angular 4 or not. This talk will look at
+          Angular 6 even though no code has yet been written for it. We'll
           look at what it might do, and how to convince your manager to hold off on any new apps until it's released`,
         voters: []
       },
@@ -148,7 +178,7 @@ const EVENTS: IEvent[] = [
         presenter: "Pascal Precht & Christoph Bergdorf",
         duration: 4,
         level: "Beginner",
-        abstract: `In this 6 hour workshop you will learn not only how to test Angular 4, 
+        abstract: `In this 6 hour workshop you will learn not only how to test Angular 4,
           you will also learn how to make the most of your team's efforts. Other topics
           will be convincing your manager that testing is a good idea, and using the new
           protractor tool for end to end testing.`,
@@ -170,7 +200,7 @@ const EVENTS: IEvent[] = [
         presenter: "Patrick Stapleton",
         duration: 2,
         level: "Intermediate",
-        abstract: `Angular 4's source code may be over 25 million lines of code, but it's really 
+        abstract: `Angular 4's source code may be over 25 million lines of code, but it's really
           a lot easier to read and understand then you may think. Patrick Stapleton will talk
           about his secretes for keeping up with the changes, and navigating around the code.`,
         voters: ['martinfowler']
@@ -181,7 +211,7 @@ const EVENTS: IEvent[] = [
         presenter: "Lukas Ruebbelke",
         duration: 1,
         level: "Beginner",
-        abstract: `In this session, Lukas will present the secret to being awesome, and how he became the President 
+        abstract: `In this session, Lukas will present the secret to being awesome, and how he became the President
           of the United States through his amazing programming skills, showing how you too can be success with just attitude.`,
         voters: ['bradgreen']
       },
@@ -305,7 +335,7 @@ const EVENTS: IEvent[] = [
         presenter: "Dan Wahlin",
         duration: 3,
         level: "Advanced",
-        abstract: `Androids may do everything for us now, allowing us to spend all day playing 
+        abstract: `Androids may do everything for us now, allowing us to spend all day playing
           the latest Destiny DLC, but we can still improve the massages they give and the handmade
           brie they make using Angular 4. This session will show you how.`,
         voters: ['igorminar', 'johnpapa']

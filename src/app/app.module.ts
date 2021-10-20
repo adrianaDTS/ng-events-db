@@ -2,20 +2,21 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, ActivatedRouteSnapshot } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import {
   EventDetailsComponent,
   EventsListComponent,
   EventsThumbnailComponent,
   EventService,
-  CreateEventComponent,
   EventListResolver,
+  EventResolver,
+  CreateEventComponent,
   CreateSessionComponent,
   SessionListComponent,
   UpVoteComponent,
-  EventRouteActivator,
-  DurationPipe,
   VoterService,
+  DurationPipe,
   LocationValidator
 } from './events/index';
 
@@ -47,7 +48,8 @@ let jQuery: Toastr = window['$'];
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
 
   // To add a component, pipe or directive, it must be firstly declared:
@@ -89,8 +91,8 @@ let jQuery: Toastr = window['$'];
     },
     /* This will be the same syntax as:
     { provide: EventRouteActivator, useClass: EventRouteActivator } */
-    EventRouteActivator,
     EventListResolver,
+    EventResolver,
     /* if someone ask for the AuthService, they're going to get an instance of the EventService:
     { provide: AuthService, useClass: EventService }
     This is used when you have a very specific kind of implementation of a class, but you have a generic

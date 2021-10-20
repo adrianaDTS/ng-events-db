@@ -12,7 +12,7 @@ export class CollapsibleWellComponent {
 
   // Icons
   plusIcon = faPlusCircle;
-  minuIcon = faMinusCircle;
+  minusIcon = faMinusCircle;
 
   toggleContent() {
     this.visible = !this.visible;
