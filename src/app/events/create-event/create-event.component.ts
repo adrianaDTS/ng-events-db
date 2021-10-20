@@ -9,6 +9,7 @@ import { EventService } from "../shared/index";
 
 export class CreateEventComponent {
   newEvent;
+
   // public property
   isDirty: boolean = true;
 

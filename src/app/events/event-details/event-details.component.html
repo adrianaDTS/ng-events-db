@@ -38,14 +38,14 @@
         <button
           class="btn btn-default"
           [class.active]="sortBy === 'name'"
-          (click)="(sortBy = 'name')"
+          (click)="sortBy = 'name'"
         >
           By name
         </button>
         <button
           class="btn btn-default"
           [class.active]="sortBy === 'votes'"
-          (click)="(sortBy = 'votes')"
+          (click)="sortBy = 'votes'"
         >
           By votes
         </button>
@@ -84,7 +84,13 @@
     <a *ngIf="!addMode" (click)="addSession()">Add session</a>
   </div>
 
-  <session-list [sortBy]="sortBy" [filterBy]="filterBy" *ngIf="!addMode" [sessions]="event?.sessions"></session-list>
+  <session-list
+    [eventId]="event?.id"
+    [sortBy]="sortBy"
+    [filterBy]="filterBy"
+    *ngIf="!addMode"
+    [sessions]="event?.sessions"
+  ></session-list>
   <create-session
     *ngIf="addMode"
     (saveNewSession)="saveNewSession($event)"

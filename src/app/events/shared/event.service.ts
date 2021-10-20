@@ -47,43 +47,51 @@ export class EventService {
   // Call to Http POST
   saveEvent(event) {
     let options = { headers: new HttpHeaders({ 'Content-Type': 'applications/json' }) };
+    console.log(event);
+
     return this.http.post<IEvent>('/api/events', event, options)
       .pipe(catchError(this.handleError<IEvent>('saveEvent')));
+  }
+  /* This server has a 'smart' endpoint, since if you add info in a session
+  with an ID that already exists, it knows that need to used a PUT instead of a POST,
+  so the updateEvent method is not necessary */
+  // updateEvent(event) {
+  //   // find the existing event in the array and replace it
+  //   let index = EVENTS.findIndex(x => x.id = event.id);
 
+  //   EVENTS[index] = event;
+  // }
+  searchSessions(searchTerm: string): Observable<ISession[]> {
+    return this.http.get<ISession[]>('/api/sessions/search?search=' + searchTerm)
+      .pipe(catchError(this.handleError<ISession[]>('searchSessions')));
   }
 
-  updateEvent(event) {
-    // find the existing event in the array and replace it
-    let index = EVENTS.findIndex(x => x.id = event.id);
+  /* TODO Old code that needs to be transfer to the learning branch */
+  // searchSessions(searchTerm: string) {
+  //   let term = searchTerm.toLocaleLowerCase();
+  //   let results: ISession[] = [];
 
-    EVENTS[index] = event;
-  }
+  //   EVENTS.forEach(event => {
+  //     let matchingSessions = event.sessions.filter(session =>
+  //       session.name.toLocaleLowerCase().indexOf(term) > -1);
 
-  searchSessions(searchTerm: string) {
-    let term = searchTerm.toLocaleLowerCase();
-    let results: ISession[] = [];
+  //     // quick and easy way to add the event ID to each session
+  //     matchingSessions = matchingSessions.map((session: any) => {
+  //       session.eventId = event.id;
+  //       return session;
+  //     });
 
-    EVENTS.forEach(event => {
-      let matchingSessions = event.sessions.filter(session =>
-        session.name.toLocaleLowerCase().indexOf(term) > -1);
+  //     results = results.concat(matchingSessions);
+  //   });
 
-      // quick and easy way to add the event ID to each session
-      matchingSessions = matchingSessions.map((session: any) => {
-        session.eventId = event.id;
-        return session;
-      });
+  //   let emitter = new EventEmitter(true);
 
-      results = results.concat(matchingSessions);
-    });
-
-    let emitter = new EventEmitter(true);
-
-    // to simulate and actual petition to an HTTP
-    setTimeout(() => {
-      emitter.emit(results);
-    }, 100);
-    return emitter;
-  }
+  //   // to simulate and actual petition to an HTTP
+  //   setTimeout(() => {
+  //     emitter.emit(results);
+  //   }, 100);
+  //   return emitter;
+  // }
 
   // Basic error handling ('T' is a generic type).
   private handleError<T>(operation = 'operation', result?: T) {
