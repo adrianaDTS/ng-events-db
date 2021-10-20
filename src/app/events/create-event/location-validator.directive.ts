@@ -1,8 +1,14 @@
 import { Directive } from "@angular/core";
-import { FormGroup, Validator } from "@angular/forms";
+import { FormGroup, Validator, NG_VALIDATORS } from "@angular/forms";
 
 @Directive({
   selector: '[validateLocation]',
+  /* In order for this validator to work, it need to be added to Angular's
+  list of validators (NG_VALIDATORS opaque token).
+  To add this validator to the list of ng validators, first we need to add
+  a providers key & with "multi: true" at the end, so it doesn't erase
+  the services */
+  providers: [{ provide: NG_VALIDATORS, useExisting: LocationValidator, multi: true }],
 })
 
 export class LocationValidator implements Validator {

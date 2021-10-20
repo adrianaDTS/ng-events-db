@@ -121,9 +121,19 @@
       />
     </div>
     <!-- ngModelGroup creates an object with all the data for "location" (address, city & country) -->
-    <div ngModelGroup="location" validateLocation>
-      <div class="form-group">
-        <label for="address">Event Location:</label>
+    <div ngModelGroup="location" #locationGroup="ngModelGroup" validateLocation>
+      <div
+        class="form-group"
+        [ngClass]="{
+          error: locationGroup?.invalid && locationGroup?.touched
+        }"
+      >
+        <div class="container-label">
+          <label for="address">Event Location:</label>
+          <em *ngIf="locationGroup?.invalid && locationGroup?.touched"
+            >You must enter either the full location or an online Url</em
+          >
+        </div>
         <input
           (ngModel)="(newEvent.address)"
           name="address"
@@ -133,7 +143,12 @@
           placeholder="Address of event..."
         />
       </div>
-      <div class="row">
+      <div
+        class="row"
+        [ngClass]="{
+          error: locationGroup?.invalid && locationGroup?.touched
+        }"
+      >
         <div class="col-md-6">
           <input
             (ngModel)="(newEvent.city)"
@@ -156,10 +171,18 @@
         </div>
       </div>
     </div>
-    <div class="form-group">
+    <div
+      class="form-group"
+      [ngClass]="{
+        error: locationGroup?.invalid && locationGroup?.touched
+      }"
+    >
       <label for="onlineUrl">Online Url:</label>
       <input
         (ngModel)="(newEvent.onlineUrl)"
+        (change)="
+          locationGroup.control.controls.address.updateValueAndValidity()
+        "
         name="onlineUrl"
         id="onlineUrl"
         type="text"
