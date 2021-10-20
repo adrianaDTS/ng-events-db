@@ -18,12 +18,20 @@ export class EventDetailsComponent implements OnInit {
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // '+' is used to cast a number
-    this.route.params.forEach((params: Params) => {
-      this.event = this.eventService.getEvent(+params['id']);
+    this.route.data.forEach((data) => {
+      this.event = data['event'];
       this.addMode = false;
     });
   }
+
+  // TODO deprecated code that need to go to leaninr branch
+  // ngOnInit() {
+  //   // '+' is used to cast a number
+  //   this.route.params.forEach((params: Params) => {
+  //     this.eventService.getEvent(+params['id']).subscribe((event: IEvent) => {});
+  //     this.addMode = false;
+  //   });
+  // }
 
   addSession() {
     this.addMode = true;

@@ -34,17 +34,15 @@ export class EventService {
     // return subject;
   }
 
-  // Basic error handling ('T' is a generic type).
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T)
-    }
-  };
-
-  getEvent(id: number): IEvent {
-    return EVENTS.find(event => event.id === id);
+  getEvent(id: number): Observable<IEvent> {
+    return this.http.get<IEvent>('/api/events/' + id)
+      .pipe(catchError(this.handleError<IEvent>('getEvents')));
   }
+
+  /* TODO Old code that needs to be transfer to the learning branch */
+  // getEvent(id: number): IEvent {
+  //   return EVENTS.find(event => event.id === id);
+  // }
 
   saveEvent(event) {
     event.id = 999;
@@ -84,6 +82,14 @@ export class EventService {
     }, 100);
     return emitter;
   }
+
+  // Basic error handling ('T' is a generic type).
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
+  };
 }
 
 const EVENTS: IEvent[] = [
