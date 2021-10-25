@@ -25,10 +25,7 @@ export class ProfileComponent implements OnInit {
 
     /* Inject is a decorator, just like Component, that allows to
     use a separete Token besides the type of the constructor parameter */
-    @Inject(TOASTR_TOKEN) private toastr: Toastr
-  ) {
-
-  };
+    @Inject(TOASTR_TOKEN) private toastr: Toastr) { };
 
   ngOnInit() {
 
@@ -38,6 +35,7 @@ export class ProfileComponent implements OnInit {
       this.authService.currentUser.firstName,
       [Validators.required, Validators.pattern('[a-zA-Z].*')]
     );
+
     this.lastName = new FormControl(
       this.authService.currentUser.lastName,
       Validators.required
@@ -51,9 +49,9 @@ export class ProfileComponent implements OnInit {
 
   saveProfile(formValues) {
     if (this.profileForm.valid) {
-      this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
-      this.router.navigate(['events']);
-      this.toastr.success('Profile saved! 🥳');
+      this.authService.updateCurrentUser(
+        formValues.firstName, formValues.lastName)
+        .subscribe(() => { this.toastr.success('Profile saved! 🥳'); });
     }
   }
 
@@ -71,5 +69,4 @@ export class ProfileComponent implements OnInit {
   cancel() {
     this.router.navigate(['events']);
   }
-
 }

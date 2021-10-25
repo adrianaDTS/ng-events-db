@@ -76,4 +76,12 @@
       </button>
     </div>
   </form>
+  <br />
+  <div
+    *ngIf="loginInvalid"
+    class="alert alert-danger"
+    style="text-align: center; font-size: 24px"
+  >
+    🚨 <span class="highlight">{{ userName }} </span>is an invalid user name 🚨
+  </div>
 </div>
